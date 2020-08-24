@@ -1,2 +1,2 @@
 # blake2-wasm
-blake2 in Rust compiled into a WASM module
+[![Build Status](https://travis-ci.org/github/Lichtso/blake2-wasm?branch=master)](https://travis-ci.org/Lichtso/blake2-wasm)

@@ -1,0 +1,19 @@
+[package]
+name = "blake2-wasm"
+version = "0.1.0"
+authors = ["Alexander Meißner <AlexanderMeissner@gmx.net>"]
+description = "blake2 in Rust compiled into a WASM module"
+repository = "https://github.com/Lichtso/blake2-wasm"
+readme = "README.md"
+license = "MIT"
+edition = "2018"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+wasm-bindgen = "0.2.67"
+blake2-rfc = { version =  "0.2.18", default-features = false }
+
+[package.metadata.wasm-pack.profile.release]
+wasm-opt = ["-Oz", "--enable-mutable-globals"]

@@ -1,0 +1,20 @@
+language: rust
+rust:
+  stable
+cache: cargo
+before_script:
+  if [[ $(cargo install --list | grep wasm-pack | wc -c) -eq 0 ]]; then cargo install wasm-pack; fi
+script:
+  wasm-pack build --target web --release
+before_deploy:
+  - mv pkg/blake2_wasm_bg.wasm blake2.wasm
+  - mv pkg/blake2_wasm.js blake2.mjs
+deploy:
+  edge: true
+  provider: releases
+  token: $GITHUB_TOKEN
+  file:
+    - blake2.wasm
+    - blake2.mjs
+  on:
+    tags: true
